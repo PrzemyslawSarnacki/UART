@@ -10,23 +10,23 @@
 # Copying C:/intelFPGA_lite/19.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vcom -93 -work work {C:/Users/Przemyslaw/Desktop/Projects/UART_transmitter/UART_transmitter.vhd}
+# vcom -93 -work work {C:/Users/Przemyslaw/Desktop/Projects/UART/UART_transmitter/UART_transmitter.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:31:21 on May 14,2020
-# vcom -reportprogress 300 -93 -work work C:/Users/Przemyslaw/Desktop/Projects/UART_transmitter/UART_transmitter.vhd 
+# Start time: 14:34:32 on May 14,2020
+# vcom -reportprogress 300 -93 -work work C:/Users/Przemyslaw/Desktop/Projects/UART/UART_transmitter/UART_transmitter.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity uart_transmitter
 # -- Compiling architecture behavioral of uart_transmitter
-# End time: 11:31:21 on May 14,2020, Elapsed time: 0:00:00
+# End time: 14:34:32 on May 14,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-# vcom -93 -work work {C:/Users/Przemyslaw/Desktop/Projects/UART_transmitter/simulation/modelsim/uart_transmitter.vht}
+# vcom -93 -work work {C:/Users/Przemyslaw/Desktop/Projects/UART/UART_transmitter/simulation/modelsim/uart_transmitter.vht}
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:31:21 on May 14,2020
-# vcom -reportprogress 300 -93 -work work C:/Users/Przemyslaw/Desktop/Projects/UART_transmitter/simulation/modelsim/uart_transmitter.vht 
+# Start time: 14:34:32 on May 14,2020
+# vcom -reportprogress 300 -93 -work work C:/Users/Przemyslaw/Desktop/Projects/UART/UART_transmitter/simulation/modelsim/uart_transmitter.vht 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
@@ -34,13 +34,13 @@
 # -- Compiling entity uart_transmitter_vhd_tst
 # -- Compiling architecture uart_transmitter_arch of uart_transmitter_vhd_tst
 # -- Loading package ENV
-# ** Warning: C:/Users/Przemyslaw/Desktop/Projects/UART_transmitter/simulation/modelsim/uart_transmitter.vht(123): (vcom-1516) Package "STD.ENV" does not exist in this language version.
-# End time: 11:31:21 on May 14,2020, Elapsed time: 0:00:00
+# ** Warning: C:/Users/Przemyslaw/Desktop/Projects/UART/UART_transmitter/simulation/modelsim/uart_transmitter.vht(133): (vcom-1516) Package "STD.ENV" does not exist in this language version.
+# End time: 14:34:32 on May 14,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 1
 # 
 # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  uart_transmitter_vhd_tst
 # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" uart_transmitter_vhd_tst 
-# Start time: 11:31:21 on May 14,2020
+# Start time: 14:34:33 on May 14,2020
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -57,6 +57,13 @@
 # run -all
 # ** Note: test rst_i
 #    Time: 0 ps  Iteration: 0  Instance: /uart_transmitter_vhd_tst
-# Break in Process p_sentData at C:/Users/Przemyslaw/Desktop/Projects/UART_transmitter/simulation/modelsim/uart_transmitter.vht line 123
-# End time: 11:33:51 on May 14,2020, Elapsed time: 0:02:30
+# Break in Process p_sentData at C:/Users/Przemyslaw/Desktop/Projects/UART/UART_transmitter/simulation/modelsim/uart_transmitter.vht line 133
+add wave -position end  sim:/uart_transmitter_vhd_tst/DUT/cnt_b
+add wave -position end  sim:/uart_transmitter_vhd_tst/DUT/state
+restart
+run -all
+# ** Note: test rst_i
+#    Time: 0 ps  Iteration: 0  Instance: /uart_transmitter_vhd_tst
+# Break in Process p_sentData at C:/Users/Przemyslaw/Desktop/Projects/UART/UART_transmitter/simulation/modelsim/uart_transmitter.vht line 133
+# End time: 14:36:03 on May 14,2020, Elapsed time: 0:01:30
 # Errors: 0, Warnings: 0

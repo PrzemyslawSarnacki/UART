@@ -69,12 +69,10 @@ DUT : uart_transmitter
 clk50_i<= not clk50_i after CLK50_PERIOD /2;  -- taktowanie modulu odbiornika 
 transmission_rate<= not transmission_rate after BAUDE_RATE_PERIOD /2; -- clk50_i transmisji 
 
-p_sentData : PROCESS  
- 
+p_sentData : PROCESS   
 procedure wait_transmission_rate is 
 begin   
-
-wait until rising_edge(transmission_rate);  
+    wait until rising_edge(transmission_rate);  
 end;   
  
 procedure test_init is   
@@ -91,15 +89,15 @@ begin
     for i in 0 to 3 loop
         if i=0 then   
             key<='0';
-            buf_i<="000000000";  -- bit start    
+      
         elsif i=3 then 
             key<='1';	
-            buf_i<="000000000";  -- bit stop    
         else      	
             buf_i<= (( ( (ascii_hex(0) xor ascii_hex(1)) xor (ascii_hex(2) xor ascii_hex(3)) xor (ascii_hex(4) xor ascii_hex(5)) xor (ascii_hex(6) xor ascii_hex(7)) ) ) & ascii_hex); -- dane
         end if;    
-        wait_transmission_rate;   
+		  wait for CLK50_PERIOD*40;	  
     end loop;		
+	
 end; 
      
 BEGIN   
@@ -110,13 +108,27 @@ rst_i<='0';
 wait for BAUDE_RATE_PERIOD;   
 rst_i<='1';   
 wait for BAUDE_RATE_PERIOD;   
- -- UART test - send data   
-sent_char(ascii_hex=> X"50"); -- P    
-wait for 10*BAUDE_RATE_PERIOD; 
-sent_char(ascii_hex=> X"55"); -- U   
-wait for 10*BAUDE_RATE_PERIOD; 
+
+
+-- UART test - send data   
+
+sent_char(ascii_hex=> X"53"); -- S    
+wait for 2*BAUDE_RATE_PERIOD; 
+sent_char(ascii_hex=> X"41"); -- A   
+wait for 2*BAUDE_RATE_PERIOD; 
+sent_char(ascii_hex=> X"52"); -- R
+wait for 2*BAUDE_RATE_PERIOD; 
+sent_char(ascii_hex=> X"4E"); -- N
+wait for 2*BAUDE_RATE_PERIOD; 
+sent_char(ascii_hex=> X"41"); -- A
+wait for 2*BAUDE_RATE_PERIOD; 
 sent_char(ascii_hex=> X"43"); -- C
-wait for BAUDE_RATE_PERIOD*8; 
+wait for 2*BAUDE_RATE_PERIOD; 
+sent_char(ascii_hex=> X"4B"); -- K
+wait for 2*BAUDE_RATE_PERIOD; 
+sent_char(ascii_hex=> X"49"); -- I
+
+wait for BAUDE_RATE_PERIOD; 
  
 std.env.stop;       
 END PROCESS p_sentData; 

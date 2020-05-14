@@ -18,7 +18,6 @@ architecture behavioral of uart_receiver is signal clkOversampling_s : std_logic
 
 	signal cnt_o : integer range 0 to 15 := 0; --licznik taktów zegara próbkującego 
 	signal cnt_b : integer range 0 to 7 := 0; --licznik bitów danych 
-	signal cnt_s : integer range 0 to 2 := 0; -- stop counter 
 
 begin
 
@@ -65,13 +64,13 @@ end if;
 when st_stop =>
  buf_o <= buf_s;
 
-if cnt_s = 2 then
+if cnt_b = 2 then
 	state <= st_idle;
 	cnt_o <= 0;
-	cnt_s <= 0;
+	cnt_b <= 0;
 elsif cnt_o = 15 then
 	cnt_o <= 0;
-	cnt_s <= cnt_s + 1;
+	cnt_b <= cnt_b + 1;
 else cnt_o <= cnt_o + 1;
 
 end if;
